@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>dropdown sample03</title>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+  <div class="list-container list-slot01">
+    <!--content here-->
+  </div>
+  <div class="list-container list-slot02">
+    <!--content here-->
+  </div>
+</div>
+
+<script src="../vendor/jquery-3.4.1.min.js"></script>
+<script src="../vendor/utilities.js"></script>
+<script src="../data/data.js"></script>
+<script>
+  $(function () {
+    $('.list-slot01').html(makeListContent(optionsArr));
+    $('.list-slot02').html(makeListContent(optionsArr.reverse()));
+
+    $('.list-container').find('.dropdown-title').click(function () {
+      var $this = $(this);
+      if ($this.hasClass('open')) {
+        $this.removeClass('open');
+        $this.next().slideUp(200);
+      } else {
+        $this.addClass('open').siblings('.dropdown-title').removeClass('open');
+        $this.next().slideDown(200).siblings('.dropdown-content').slideUp();
+      }
+    });
+  });
+</script>
+</body>
+</html>
