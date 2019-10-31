@@ -1,0 +1,113 @@
+html, body {
+    margin: 0;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 24px;
+    background-color: #f1f1f1;
+}
+
+.container, .list-container, .tab-container, .tab-btn-container, .tab-btn-container:after, .tab-cnt-container {
+    display: block;
+    position: relative;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    margin: 40px auto;
+}
+
+.list-container {
+    width: 100%;
+    margin-bottom: 35px;
+}
+
+.dropdown-title, .dropdown-content {
+    position: relative;
+    width: 100%;
+    padding: .4em .6em;
+    box-sizing: border-box;
+}
+
+.dropdown-title {
+    display: block;
+    border-radius: .3em;
+    background: linear-gradient(180deg, #7cffdd, #07c795);
+    color: black;
+    transition: all ease .2s;
+    user-select: none;
+}
+
+.dropdown-title.open {
+    border-radius: .3em .3em 0 0;
+}
+
+.dropdown-content {
+    display: none;
+    border-width: 0 3px 3px 3px;
+    border-style: solid;
+    border-color: #07c795;
+    background-color: #f1f1f1;
+}
+
+.dropdown-content + .dropdown-title {
+    margin-top: 15px;
+}
+
+.tab-container {
+    margin-bottom: 35px;
+}
+
+.tab-btn-container:after {
+    height: 0;
+    float: none;
+    clear: both;
+    content: '';
+}
+
+.tab-btn {
+    display: inline-block;
+    position: relative;
+    padding: .2em .6em;
+    border-radius: .3em .3em 0 0;
+    float: left;
+    background-color: #c0e6da;
+    color: #464646;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.tab-btn + .tab-btn {
+    margin-left: .4em;
+}
+
+.tab-btn.active {
+    background: linear-gradient(180deg, #7cffdd, #07c795);
+    color: black;
+}
+
+.tab-cnt {
+    display: none;
+    position: relative;
+    padding: .4em .6em;
+    border: 3px solid #07c795;
+    background-color: #f1f1f1;
+}
+
+@media (prefers-color-scheme: dark) {
+    html, body {
+        background-color: #282828;
+        color: #dedede;
+    }
+
+    .dropdown-content {
+        background-color: #464646;
+        color: #dedede;
+    }
+
+    .tab-cnt {
+        background-color: #464646;
+        color: #dedede;
+
+    }
+
+}
