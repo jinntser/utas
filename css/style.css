@@ -121,6 +121,15 @@ header .header-container {
     box-sizing: border-box;
 }
 
+header h1 {
+    display: block;
+    position: relative;
+    margin: 0;
+    text-align: center;
+    font-size: 36px;
+    line-height: 60px;
+}
+
 header + .container {
     margin-top: 80px;
 }
@@ -238,6 +247,10 @@ header + .container {
         background-color: #464646;
         color: #dedede;
 
+    }
+
+    header h1 {
+        color: black;
     }
 
     .side-menu-wrap {
