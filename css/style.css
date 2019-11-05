@@ -5,7 +5,7 @@ html, body {
     background-color: #f1f1f1;
 }
 
-.container, .list-container, .tab-container, .tab-btn-container, .tab-btn-container:after, .tab-cnt-container {
+.container, .list-container {
     display: block;
     position: relative;
 }
@@ -53,6 +53,12 @@ html, body {
     margin-top: 15px;
 }
 
+/*tab 用的*/
+.tab-container, .tab-btn-container, .tab-btn-container:after, .tab-cnt-container {
+    display: block;
+    position: relative;
+}
+
 .tab-container {
     margin-bottom: 35px;
 }
@@ -93,6 +99,7 @@ html, body {
     background-color: #f1f1f1;
 }
 
+/*dark mode*/
 @media (prefers-color-scheme: dark) {
     html, body {
         background-color: #282828;
@@ -109,5 +116,4 @@ html, body {
         color: #dedede;
 
     }
-
 }
