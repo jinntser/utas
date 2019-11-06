@@ -108,6 +108,7 @@ header {
     top: 0;
     width: 100vw;
     background-color: #07c795;
+    z-index: 1;
 }
 
 header .header-container {
@@ -143,7 +144,7 @@ header + .container {
     height: 60px;
     border: 2px solid #464646;
     box-sizing: border-box;
-    z-index: 3;
+    z-index: 4;
     transition: all ease .3s;
 }
 
@@ -202,7 +203,7 @@ header + .container {
     height: 100vh;
     background-color: #f1f1f1;
     box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0);
-    z-index: 2;
+    z-index: 3;
     transform: translateX(-100%);
     transition: all ease .3s;
 }
@@ -221,7 +222,7 @@ header + .container {
     height: 100vh;
     background-color: black;
     opacity: .7;
-    z-index: 1;
+    z-index: 2;
 }
 
 @media screen and (max-width: 700px) {
@@ -230,6 +231,57 @@ header + .container {
     }
 }
 
+/*scroll 相關*/
+.one-page {
+    position: relative;
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    border-bottom: 5px dashed #f1f1f1;
+    box-sizing: border-box;
+}
+
+.one-page-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.one-page-control-wrap {
+    display: block;
+    position: relative;
+    padding: 5px;
+    text-align: center;
+}
+
+.one-page-control-wrap ul {
+    margin: 0;
+    list-style: none;
+}
+
+.one-page-control-wrap ul li {
+    display: inline-block;
+}
+
+.one-page-control {
+    display: inline-block;
+    position: relative;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 20px;
+    line-height: 1;
+    background-color: #c0e6da;
+    color: #464646;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.one-page-control.active {
+    box-shadow: 0 1px 5px 1px rgba(0, 0, 0, .5);
+    background-color: #464646;
+    color: #f1f1f1;
+}
 
 /*dark mode*/
 @media (prefers-color-scheme: dark) {

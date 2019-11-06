@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=1.5"/>
+  <title>page scroll sample02</title>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+  <div class="header-container">
+    <nav class="one-page-control-wrap">
+      <ul>
+        <li>
+          <a href="#page1" class="one-page-control">區塊 1</a>
+        </li>
+        <li>
+          <a href="#page2" class="one-page-control">區塊 2</a>
+        </li>
+        <li>
+          <a href="#page3" class="one-page-control">區塊 3</a>
+        </li>
+        <li>
+          <a href="#page4" class="one-page-control">區塊 4</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="one-page" id="page1">
+  <div class="one-page-wrap">
+    <div class="container">
+      <h2>區塊 1</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. A arcu cursus vitae congue mauris. Neque egestas congue quisque egestas diam in arcu. Nulla
+        pellentesque dignissim enim sit amet venenatis urna. Egestas tellus rutrum tellus pellentesque eu. Morbi
+        tincidunt ornare massa eget egestas purus viverra accumsan in. In pellentesque massa placerat duis ultricies.
+        Tortor aliquam nulla facilisi cras.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="one-page" id="page2">
+  <div class="one-page-wrap">
+    <div class="container">
+      <h2>區塊 2</h2>
+      <p>
+        Laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt. Non enim praesent elementum
+        facilisis leo vel fringilla est. Nunc sed blandit libero volutpat. Nulla facilisi cras fermentum odio eu
+        feugiat. Nunc sed velit dignissim sodales ut eu sem integer. Pharetra massa massa ultricies mi quis hendrerit.
+        Eget dolor morbi non arcu risus quis varius quam quisque. Cursus metus aliquam eleifend mi. Proin gravida
+        hendrerit lectus a. Viverra maecenas accumsan lacus vel facilisis volutpat. Fames ac turpis egestas sed.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="one-page" id="page3">
+  <div class="one-page-wrap">
+    <div class="container">
+      <h2>區塊 3</h2>
+      <p>
+        Ullamcorper morbi tincidunt ornare massa eget egestas purus viverra accumsan. Orci nulla pellentesque dignissim
+        enim sit amet. Ultricies lacus sed turpis tincidunt id aliquet. Pellentesque massa placerat duis ultricies. At
+        erat pellentesque adipiscing commodo elit at. Integer malesuada nunc vel risus commodo viverra maecenas
+        accumsan.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="one-page" id="page4">
+  <div class="one-page-wrap">
+    <div class="container">
+      <h2>區塊 4</h2>
+      <p>
+        Cursus sit amet dictum sit. Facilisis magna etiam tempor orci eu lobortis elementum. Duis convallis convallis
+        tellus id. Enim sed faucibus turpis in eu mi bibendum. Suscipit adipiscing bibendum est ultricies integer. Neque
+        ornare aenean euismod elementum nisi quis. Tortor aliquam nulla facilisi cras fermentum odio eu feugiat. Nec
+        ultrices dui sapien eget mi proin. Molestie a iaculis at erat.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script src="../vendor/jquery-3.4.1.min.js"></script>
+<script>
+  $(function () {
+
+    $('.one-page-control').on('click', function (e) {
+      // 阻止元素本身預設會觸發的行為，這邊是 a 標籤的連結
+      e.preventDefault();
+
+      var targetID = $(this).attr('href');
+      // 利用上面找到 targetID 的字串去尋找目標，取出它在頁面上的位置
+      var targetScrollTop = $(targetID).offset().top;
+
+      $('html, body').animate({
+        scrollTop: targetScrollTop
+      }, 500);
+    });
+
+  });
+
+  // 用 onload 是因為要等內容全部載入完畢再去抓內容的位置才會是正確的
+  $(window).on('load', function () {
+    // 將按鈕及對應頁面的資訊存起來
+    var scrollManager = [];
+    $('.one-page-control').each(function () {
+      var $this = $(this);
+      var target = $($this.attr('href'));
+
+      scrollManager.push({
+        controlButton: $this,
+        targetOffsetTop: target.offset().top,
+        targetOffsetBottom: target.offset().top + target.outerHeight(),
+      });
+    });
+
+    $(document).on('scroll', function () {
+      var scrollTop = $(this).scrollTop();
+
+      for (var i = 0; i < scrollManager.length; i++) {
+        if (scrollTop >= scrollManager[i].targetOffsetTop && scrollTop < scrollManager[i].targetOffsetBottom) {
+          // 頁面滾動到的位置在此頁面內，對應的按鈕就加上樣式
+          scrollManager[i].controlButton.addClass('active');
+        } else {
+          // 不符合條件的按鈕就移除樣式
+          scrollManager[i].controlButton.removeClass('active');
+        }
+      }
+    }).scroll();
+  });
+</script>
+</body>
+</html>
