@@ -22,6 +22,21 @@ html, body {
     margin-bottom: 35px;
 }
 
+.sample-links {
+    display: block;
+    position: relative;
+    margin: 15px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sample-links a {
+    display: block;
+    position: relative;
+    color: #464646;
+    text-decoration: underline;
+}
+
 .dropdown-title, .dropdown-content {
     position: relative;
     width: 100%;
@@ -288,6 +303,10 @@ header + .container {
     html, body {
         background-color: #282828;
         color: #dedede;
+    }
+
+    .sample-links a {
+        color: #a0f1d2;
     }
 
     .dropdown-content {
